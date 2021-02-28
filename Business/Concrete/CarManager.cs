@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
+using System.Linq;
 
 namespace Business.Concrete
 {
@@ -20,7 +21,7 @@ namespace Business.Concrete
         public void Add(Car car)
         {
 
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentACarContext context = new RentACarContext())
             {
                 if (car.DailyPrice > 0 && context.Brands.SingleOrDefault(b => b.BrandId == car.BrandId).BrandName.Length > 2)
                 {
@@ -45,6 +46,16 @@ namespace Business.Concrete
         public List<Car> GetCarByColorId(int id)
         {
             return _carDal.GetAll(c => c.ColorId == id);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }
+
+        public List<Car> GetCarsByDailyPrice(decimal minPrice, decimal maxPrice)
+        {
+            return _carDal.GetAll(c => c.DailyPrice >= minPrice && c.DailyPrice <= maxPrice);
         }
     }
 }
