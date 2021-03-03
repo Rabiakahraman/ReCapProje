@@ -15,25 +15,35 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<CarDetailDto> GetCarDetails()
         {
-            using (RentACarContext context = new RentACarContext())
+            try
             {
-                var result = from c in context.Cars
-                             join b in context.Brands
-                             on c.BrandId equals b.BrandId
-                             join r in context.Colors
-                             on c.ColorId equals r.ColorId
-                             select new CarDetailDto
-                             {
-                                 Id = c.CarId,
-                                 BrandId = b.BrandId,
-                                 ColorId = r.ColorId,
-                                 DailyPrice = c.DailyPrice,
-                                 ModelYear = c.ModelYear,
-                                 Description = c.Description
-                             };
-                return result.ToList();
+                using (RentACarContext context = new RentACarContext())
+                {
 
+                    var result = from c in context.Cars
+                                 join b in context.Brands on c.BrandId equals b.BrandId
+                                 join r in context.Colors on c.ColorId equals r.ColorId                                
+                                 select new CarDetailDto()
+                                 {
+                                     Id = c.CarId,
+                                     BrandName = b.BrandName,
+                                     BrandId = b.BrandId,
+                                    ColorId = r.ColorId,
+                                    DailyPrice = c.DailyPrice,
+                                     ModelYear = c.ModelYear,
+                                     Description = c.Description
+                                 };
+
+                    return result.ToList();
+
+                }
             }
+            catch (Exception ex)
+            {
+                var hata = ex.Message.ToList();
+                throw;
+            }
+            
         }
     }
 }
