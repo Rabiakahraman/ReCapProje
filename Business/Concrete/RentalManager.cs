@@ -14,16 +14,11 @@ namespace Business.Concrete
     class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        private EfRentalDal efRentalDal;
+        
 
         public RentalManager(IRentalDal rentalDal)
         {
             _rentalDal = rentalDal;
-        }
-
-        public RentalManager(EfRentalDal efRentalDal)
-        {
-            this.efRentalDal = efRentalDal;
         }
 
         public IResult Add(Rental rental)

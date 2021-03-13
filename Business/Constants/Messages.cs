@@ -14,19 +14,24 @@ namespace Business.Constants
         internal static string CarDeleted="araba silindi";
         internal static string CarUpdated="araba güncellendi";
         internal static string RentalAdded="kiralama eklendi";
-        internal static string RentalDeleted;
-        internal static string RentalListed;
-        internal static string RentalUpdated;
-        internal static string UserDeleted;
-        internal static string UserListed;
-        internal static string UserUpdated;
-        internal static string CostumerAdded;
-        internal static string CostumerDeleted;
-        internal static string CostumerListed;
-        internal static string CostumerUpdated;
-        internal static string UserNotAdded;
-        internal static string UserAdded;
-        internal static string NameInvalid;
-        internal static string Added;
+        internal static string RentalDeleted="kiralama silindi";
+        internal static string RentalListed="kiralama listele";
+        internal static string RentalUpdated="kiralama güncelleme";
+        internal static string UserDeleted="kişiyi sil";
+        internal static string UserListed="kişiyi listele";
+        internal static string UserUpdated="kişiyi güncelle";
+        internal static string CostumerAdded="müşteri eklendi";
+        internal static string CostumerDeleted="müşteri silindi";
+        internal static string CostumerListed="müşteri listele";
+        internal static string CostumerUpdated="müşteri güncellenddi";
+        internal static string UserNotAdded="kişi ekleme başarısız";
+        internal static string UserAdded="kişi eklendi";
+        internal static string NameInvalid="geeçersiz ad";
+        internal static string Added="eklendi";
+        internal static string ColorName;
+        internal static string ColorAdded;
+        internal static string ColorDeleted;
+        internal static string ColorUpdated;
+        internal static string ColorListed;
     }
 }
