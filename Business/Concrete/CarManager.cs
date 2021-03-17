@@ -9,6 +9,10 @@ using DataAccess.Concrete.EntityFramework;
 using System.Linq;
 using Core.Utilities.Results;
 using Business.Constants;
+using FluentValidation;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
+using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -19,27 +23,16 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (car.CarName.Length < 2)
-            {
-                return new ErrorResult("ürün ismi en az 2 karakterli olmalıdır");
-            }
+
+            ValidationTool.Validate(new CarValidator(),car);
+
             _carDal.Add(car);
+
             return new SuccessResult(Messages.CarAdded);
 
-            //using (RentACarContext context = new RentACarContext())
-            //{
-            //    if (car.DailyPrice > 0 && context.Brands.SingleOrDefault(b => b.BrandId == car.BrandId).BrandName.Length > 2)
-            //    {
-            //        _carDal.Add(car);
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Ekleme işleminiz yapılamamıştır.");
-            //    }
-
-            //}
         }
         public IDataResult<List<Car>> GetAll()
         {

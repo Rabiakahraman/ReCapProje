@@ -28,10 +28,10 @@ namespace Business.Constants
         internal static string UserAdded="kişi eklendi";
         internal static string NameInvalid="geeçersiz ad";
         internal static string Added="eklendi";
-        internal static string ColorName;
-        internal static string ColorAdded;
-        internal static string ColorDeleted;
-        internal static string ColorUpdated;
-        internal static string ColorListed;
+        internal static string ColorName="renk isimi";
+        internal static string ColorAdded="renk eklendi";
+        internal static string ColorDeleted="renk silindi";
+        internal static string ColorUpdated="renk güncellendi";
+        internal static string ColorListed="renk listelendi";
     }
 }
